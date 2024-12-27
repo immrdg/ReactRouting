@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Store, Info } from 'lucide-react';
+import React from 'react';
 
 export default function Navigation() {
   const location = useLocation();
