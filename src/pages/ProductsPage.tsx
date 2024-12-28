@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../types/product';
 import { Package, Loader2 } from 'lucide-react';
+import api from '../api/axios';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -10,14 +11,10 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3001/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
+        const { data } = await api.get<Product[]>('/products');
         setProducts(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : 'An error occurred while fetching products');
       } finally {
         setLoading(false);
       }
