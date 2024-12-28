@@ -1,11 +1,17 @@
-import axios from 'axios';
+import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
 
-const api = axios.create({
-  baseURL: 'http://localhost:3001',
-  timeout: 5000,
+type CustomAxiosDefaults = CreateAxiosDefaults
+
+const customDefaults: CustomAxiosDefaults = {
+  baseURL: 'https://api.example.com',
   headers: {
-    'Content-Type': 'application/json',
+    common: {
+      'Content-Type': 'application/json',
+    },
   },
-});
+  timeout: 10000, // 10 seconds
+};
 
-export default api;
+const axiosInstance: AxiosInstance = axios.create(customDefaults);
+
+export default axiosInstance;
