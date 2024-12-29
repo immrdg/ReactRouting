@@ -3,7 +3,7 @@ import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
 type CustomAxiosDefaults = CreateAxiosDefaults
 
 const customDefaults: CustomAxiosDefaults = {
-  baseURL: 'https://api.example.com',
+  baseURL: 'http://localhost:3001/',
   headers: {
     common: {
       'Content-Type': 'application/json',
